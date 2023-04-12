@@ -1,11 +1,16 @@
 import React from "react";
+import Home from "./container/Home";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <div>
-      <div>
-        <Navbar />
+      <Navbar />
+      <div className="h-full">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </div>
   );
