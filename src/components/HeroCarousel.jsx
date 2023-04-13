@@ -7,6 +7,7 @@ import {
 import Image1 from "../assets/slide_1.png";
 import Image2 from "../assets/slide_2.jpg";
 import Image3 from "../assets/slide_3.jpg";
+import Image4 from "../assets/slide_3.jpg";
 
 const HeroCarousel = () => {
   const images = [
@@ -27,6 +28,12 @@ const HeroCarousel = () => {
       alt: "Image 3",
       title: "Title 3",
       subtitle: "Subtitle 3",
+    },
+    {
+      src: Image4,
+      alt: "Image 4",
+      title: "Title 4",
+      subtitle: "Subtitle 4",
     },
   ];
 
@@ -60,11 +67,13 @@ const HeroCarousel = () => {
               : "opacity-0 absolute top-0 left-0"
           }`}
         >
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="w-full h-full object-cover"
-          />
+          <div className="h-1/2" style={{ height: "300px" }}>
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="absolute inset-0 flex flex-col justify-center items-center">
             <h1 className="text-4xl font-bold text-white mb-4">
               {image.title}
