@@ -2,7 +2,6 @@ import React from "react";
 import Home from "./container/Home";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HeroCarousel from "./components/HeroCarousel";
 
 const App = () => {
   return (
