@@ -1,97 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 
-import Image1 from "../assets/slide_1.png";
-import Image2 from "../assets/slide_2.jpg";
-import Image3 from "../assets/slide_3.jpg";
-import Image4 from "../assets/slide_4.jpg";
+import slides from "../data/slideData";
 
 const HeroCarousel = () => {
-  const images = [
-    {
-      src: Image1,
-      alt: "Image 1",
-      title: "Grosvenor – Vaš pouzdani partner",
-      subtitle:
-        "Grosvenor SCM, deo Britanske grupe Grosvenor Associates Corporation od 2005. godine, je Vaš pouzdani partner za kompletna rešenja namenjena elektronskoj, automobilskoj i elektrotehničkoj industriji preko naših efikasnih i fleksibilnih usluga.",
-    },
-    {
-      src: Image2,
-      alt: "Image 2",
-      title: "Usluge namenjene industriji",
-      subtitle:
-        "Grosvenor paket usluga uključuje ESD i IPC obuku, tehničku pomoć, integrisanu logistiku i špediciju, kao i skladištenje i isporuku robe, sve namenjeno elektronskoj, automobilskoj i elektrotehničkoj industriji u Srbiji.",
-    },
-    {
-      src: Image3,
-      alt: "Image 3",
-      title: "Proizvodi i usluge u elektronskoj industriji",
-      subtitle:
-        "Grosvenor SCM proizvodi zadovoljavaju i najzahtevnije potrebe klijenata iz elektronske, elektrotehničke, automobilske, tekstilne i plastične industrije, kao i iz industrije obrade metala.",
-    },
-    {
-      src: Image4,
-      alt: "Image 4",
-      title: "Nudimo personalizovane ponude",
-      subtitle:
-        "Grosvenor SCM Vam je na raspologanju sa širokim spektrom proizvoda, usluga i aplikacija. Zatražite personalizovanu ponudu za Vašu firmu ili savet specijalizovanog inženjera i započećemo zajedničko uspešno partnerstvo.",
-    },
-  ];
+  // Defining states for the current slide and active dot index.
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const [currentImage, setCurrentImage] = useState(0);
-  const [activeDotIndex, setActiveDotIndex] = useState(0);
-
+  // Using useEffect to set an interval for sliding between images.
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((currentImage + 1) % images.length);
-    }, 5000);
+    // Updating the current slide state based on the next slide index.
+    const interval = setInterval(nextSlide, 5000);
 
-    setActiveDotIndex(currentImage);
-
+    // Clearing the interval to avoid memory leaks.
     return () => clearInterval(interval);
-  }, [currentImage]);
+  }, [currentSlide]);
 
-  const nextSlide = () => {
-    setCurrentImage((currentImage + 1) % images.length);
-    setActiveDotIndex((activeDotIndex + 1) % images.length);
-  };
+  // Function to slide to the next image.
+  const nextSlide = useCallback(() => {
+    // Updating the current slide state based on the next slide index.
+    setCurrentSlide((currentSlide + 1) % slides.length);
+  }, [currentSlide]);
 
-  const prevSlide = () => {
-    setCurrentImage((currentImage - 1 + images.length) % images.length);
-    setActiveDotIndex((activeDotIndex - 1 + images.length) % images.length);
-  };
+  // Function to slide to the previous image.
+  const prevSlide = useCallback(() => {
+    // Updating the current slide state based on the previous slide index.
+    setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
+  }, [currentSlide]);
+
+  // Memoizing the slides and activeDotIndex for performance.
+  const memoizedSlides = useMemo(() => slides, []);
+  const activeDotIndex = useMemo(() => currentSlide, [currentSlide]);
+
+  // ^^^^^^^^^^^^^^^^^^^^
+  // <------return------>
+  // vvvvvvvvvvvvvvvvvvvv
 
   return (
     <div className="relative">
-      {images.map((image, index) => (
+      {/* Render each slide and descontructuring slides const. */}
+      {memoizedSlides.map(({ src, alt, title, subtitle }, index) => (
         <div
           key={index}
           className={`w-full transition-opacity duration-500 ${
-            index === currentImage
+            index === currentSlide
               ? "opacity-100"
               : "opacity-0 absolute top-0 left-0"
           }`}
         >
+          {/* Render the image for the slide */}
           <div className="h-1/2 sm:h-3/5" style={{ height: "300px" }}>
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover"
-            />
+            <img src={src} alt={alt} className="w-full h-full object-cover" />
           </div>
+          {/* Render the title and subtitle for the slide */}
           <div className="absolute inset-0 flex flex-col justify-center items-center px-4">
             <h1 className="text-4xl sm:text-5xl font-bold font-stroke mb-4 text-white text-center">
-              {image.title}
+              {title}
             </h1>
-            <p className="text-lg sm:text-xl font-stroke-sm text-white font-bold text-center">
-              {image.subtitle}
+            <p className="text-md sm:text-xl font-stroke-sm text-white font-bold text-center">
+              {subtitle}
             </p>
           </div>
         </div>
       ))}
+      {/* Render the button for moving to the previous slide */}
       <div className="absolute top-1/2 left-0 transform -translate-y-1/2 flex items-center">
         <button
           className="p-2 rounded-full bg-white bg-opacity-50 text-black hover:bg-opacity-75 transition-colors duration-300"
@@ -100,6 +75,7 @@ const HeroCarousel = () => {
           <MdOutlineKeyboardArrowLeft className="h-6 w-6" />
         </button>
       </div>
+      {/* Render the button for moving to the next slide */}
       <div className="absolute top-1/2 right-0 transform -translate-y-1/2 flex items-center">
         <button
           className="p-2 rounded-full bg-white bg-opacity-50 text-black hover:bg-opacity-75 transition-colors duration-300"
@@ -108,17 +84,15 @@ const HeroCarousel = () => {
           <MdOutlineKeyboardArrowRight className="h-6 w-6" />
         </button>
       </div>
+      {/* Render the navigation dots for each slide */}
       <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 mb-4">
-        {images.map((_, index) => (
+        {memoizedSlides.map((_, index) => (
           <button
             key={index}
-            className={`h-2 w-2 rounded-full bg-white ${
+            className={`h-4 w-4 rounded-full bg-cyan-400 ${
               index === activeDotIndex ? "opacity-100" : "opacity-50"
             }`}
-            onClick={() => {
-              setCurrentImage(index);
-              setActiveDotIndex(index);
-            }}
+            onClick={() => setCurrentSlide(index)}
           ></button>
         ))}
       </div>
