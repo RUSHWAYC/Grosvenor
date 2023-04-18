@@ -20,3 +20,5 @@ const text = [
     subtwo: "",
   },
 ];
+
+export default text;

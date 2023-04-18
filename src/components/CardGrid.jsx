@@ -15,8 +15,10 @@ const CardGrid = () => {
             <BsLink45Deg size={32} />
           </div>
           <div className="p-4">
-            <div className="border-l-2 border-gray-200 pl-2 text-center">
-              <h3 className="text-white py-4 font-bold text-lg">{card.text}</h3>
+            <div className="border-l-2 border-gray-200 pl-2 text-center h-24">
+              <h3 className="text-white py-4 font-bold text-lg h-full flex items-center justify-center">
+                {card.text}
+              </h3>
             </div>
           </div>
         </div>
