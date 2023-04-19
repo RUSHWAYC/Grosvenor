@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 import brandsData from "../data/brandsData";
 
 const BrandsCarousel = () => {
@@ -28,15 +29,22 @@ const BrandsCarousel = () => {
   };
 
   return (
-    <div className="mx-10 border-2 border-gray-300">
-      <Slider {...settings}>
-        {brandsData.map((brand) => (
-          <div key={brand.id}>
-            <img src={brand.logo} alt={brand.alt} />
-          </div>
-        ))}
-      </Slider>
-    </div>
+    <>
+      <div className="mx-10 border-2 border-gray-300">
+        <Slider {...settings}>
+          {brandsData.map((brand) => (
+            <div key={brand.id}>
+              <Link to={brand.link} target="_blank" rel="noopener noreferrer">
+                <img src={brand.logo} alt={brand.alt} />
+              </Link>
+            </div>
+          ))}
+        </Slider>
+      </div>
+      <button className="bg-orange-500 text-white font-bold py-2 px-4 rounded mt-8 mx-auto block">
+        Lista svih partnera
+      </button>
+    </>
   );
 };
 
