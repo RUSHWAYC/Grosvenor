@@ -1,31 +1,31 @@
 const cards = [
   {
-    id: 1,
+    id: "montaza-i-zastita-stampanih-ploca",
     text: "Montaža i zaštita štampanih ploča (PCB)",
     color: "bg-black",
   },
   {
-    id: 2,
+    id: "esd-zastita",
     text: "ESD zaštita",
     color: "bg-stone-600",
   },
   {
-    id: 3,
+    id: "upravljanje-temperaturom",
     text: "Upravljanje temperaturom",
     color: "bg-stone-400",
   },
   {
-    id: 4,
+    id: "industrijska-primena-i-odrzavanje",
     text: "Industrijska primena i održavanje",
     color: "bg-slate-400",
   },
   {
-    id: 5,
+    id: "oporavak-legure",
     text: "Oporavak legure",
     color: "bg-blue-300",
   },
   {
-    id: 6,
+    id: "oprema-za-obelezavanje-i-radni-prostor",
     text: "Oprema za obeležavanje i radni prostor",
     color: "bg-indigo-400",
   },
