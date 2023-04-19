@@ -6,7 +6,7 @@ import cards from "../data/cardGridData";
 
 const ApplicationGrid = () => {
   return (
-    <div className="sm:mx-20 mx-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+    <div className="mx-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
       {cards.map((card) => (
         <Link key={card.id} to={`/primena/${card.id}`}>
           <div

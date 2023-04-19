@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import services from "../data/servicesData";
 
-const Services = () => {
+const ServicesGrid = () => {
   return (
-    <div className="bg-yellow-400 py-16">
+    <div className="bg-amber-200 py-8 mx-10 border-b-8 border-amber-500">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4 mx-6">
           {services.map((service, index) => (
             <Link to="/" key={index}>
               <div className="overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-500 transform hover:scale-105 flex flex-col">
@@ -30,4 +30,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ServicesGrid;

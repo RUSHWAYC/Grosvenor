@@ -3,7 +3,8 @@ import HeroCarousel from "../components/HeroCarousel";
 import TextBox from "../components/TextBox";
 import ApplicationGrid from "../components/ApplicationGrid";
 import text from "../data/textBoxData";
-import Services from "../components/Services";
+import ServicesGrid from "../components/ServicesGrid";
+import BrandsCarousel from "../components/BrandsCarousel";
 
 const Home = () => {
   return (
@@ -21,7 +22,13 @@ const Home = () => {
         subt1={text[1].subone}
         subt2={text[1].subtwo}
       />
-      <Services />
+      <ServicesGrid />
+      <TextBox
+        title={text[2].title}
+        subt1={text[2].subone}
+        subt2={text[2].subtwo}
+      />
+      <BrandsCarousel />
     </div>
   );
 };
