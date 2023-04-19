@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 import cards from "../data/cardGridData";
 
-const CardGrid = () => {
+const ApplicationGrid = () => {
   return (
-    <div className="mx-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+    <div className="sm:mx-20 mx-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
       {cards.map((card) => (
         <Link key={card.id} to={`/primena/${card.id}`}>
           <div
@@ -29,4 +29,4 @@ const CardGrid = () => {
   );
 };
 
-export default CardGrid;
+export default ApplicationGrid;
