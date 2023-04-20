@@ -5,6 +5,7 @@ import ApplicationGrid from "../components/ApplicationGrid";
 import text from "../data/textBoxData";
 import ServicesGrid from "../components/ServicesGrid";
 import BrandsCarousel from "../components/BrandsCarousel";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
         subt2={text[2].subtwo}
       />
       <BrandsCarousel />
+      <Footer />
     </div>
   );
 };
