@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BsCart4, BsList } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
-import logo from "../assets/grosvenor_logo.png";
+import logo from "../assets/logo-grosvenor.png";
 
 const isNotActiveStyle =
   "block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0";

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaPhone, FaEnvelope, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../assets/grosvenor_logo.png";
+import logo from "../assets/logo-grosvenor.png";
 
 const Footer = () => {
   return (
