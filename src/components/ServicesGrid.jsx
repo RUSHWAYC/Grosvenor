@@ -8,7 +8,7 @@ const ServicesGrid = ({ subtitle, className }) => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4 mx-6">
           {services.map((service, index) => (
-            <Link to="/" key={index}>
+            <Link to={service.link} key={index}>
               <div className="overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-500 transform hover:scale-105 flex flex-col">
                 <img
                   src={service.img}
