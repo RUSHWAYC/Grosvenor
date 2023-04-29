@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Services from "./container/Services";
 import Applications from "./container/Applications";
+import Contact from "./container/Contact";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/usluge" element={<Services />} />
           <Route path="/primena" element={<Applications />} />
+          <Route path="/kontakt" element={<Contact />} />
         </Routes>
       </div>
       <Footer />
