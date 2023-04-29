@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Services from "./container/Services";
+import Applications from "./container/Applications";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/usluge" element={<Services />} />
+          <Route path="/primena" element={<Applications />} />
         </Routes>
       </div>
       <Footer />
